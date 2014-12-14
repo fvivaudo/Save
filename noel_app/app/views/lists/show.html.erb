@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-3 col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading c-list">
+          <span class="title">THE <%= @list.name.upcase %> LIST</span>
+          <ul class="pull-right c-controls">
+            <li><a href="<%= url_for(lists_url) %>" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="glyphicon glyphicon-chevron-left"></i></a></li>
+            <li><a href="<%= url_for(new_item_url) %>" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="glyphicon glyphicon-plus"></i></a></li>
+            <li><a href="<%= url_for(edit_list_url(@list)) %>" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="glyphicon glyphicon-wrench"></i></a></li>
+          </ul>
+        </div>
+
+        <div class="row" style="display: none;">
+          <div class="col-xs-12">
+            <div class="input-group c-search">
+              <input type="text" class="form-control" id="contact-list-search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search text-muted"></span></button>
+                            </span>
+            </div>
+          </div>
+        </div>
+
+        <ul class="list-group" id="contact-list">
+                <li class="list-group-item">
+                  <div class="form-group">
+                        <%= form_tag(list_path(@list), :method => "get", id: "search-form") do %>
+                            <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-control" %>
+                            <%# submit_tag "Search", :name => nil %>
+                        <% end %>
+                  </div>
+                  <div class="form-group">
+                    <%= render @participations %>
+                  </div>
+                </li>
+                <% @list.items.each do |item| %>
+                    <li class="list-group-item">
+                        test
+                    </li>
+                <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

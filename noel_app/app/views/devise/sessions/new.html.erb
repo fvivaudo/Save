@@ -1,0 +1,19 @@
+  <div class="login-container">
+    <div id="output"></div>
+    <div class="avatar"></div>
+    <div class="form-box">
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.input :email, :as => :string, required: false, autofocus: true, label: false, placeholder: "E-mail" %>
+        <div class="password">
+          <%= f.input :password, required: false, label: false, placeholder: "Mot de passe" %>
+          <span class="glyphicon glyphicon-eye-open"></span>
+        </div>
+          <%= button_tag(type: 'submit', class: "btn btn-info btn-block login") do %>
+              Connexion
+          <% end %>
+      <% end %>
+      <br>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+

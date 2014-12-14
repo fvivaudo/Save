@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-3 col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading c-list">
+          <span class="title">THE GUESS LIST</span>
+          <ul class="pull-right c-controls">
+            <li><a href="<%= url_for(new_list_url) %>" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="glyphicon glyphicon-plus"></i></a></li>
+          </ul>
+        </div>
+
+        <div class="row" style="display: none;">
+          <div class="col-xs-12">
+            <div class="input-group c-search">
+              <input type="text" class="form-control" id="contact-list-search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search text-muted"></span></button>
+                            </span>
+            </div>
+          </div>
+        </div>
+
+        <ul class="list-group" id="contact-list">
+          <% @lists.each do |list| %>
+              <a href="<%= url_for(list) %>" style="color: #000">
+                <li class="list-group-item">
+                  <div class="col-xs-12 col-sm-3">
+                    <img src="http://api.randomuser.me/portraits/women/50.jpg" alt="Scott Stevens" class="img-responsive img-circle" />
+                  </div>
+                  <div class="col-xs-12 col-sm-9">
+                    <span class="name"><%= list.name %></span><br/>
+                    <span class=""><strong>Anniversaire : </strong><%= list.birthday.strftime('%d %B') %><br/></span>
+                    <span class=""><strong>Liste de : </strong><%= list.user.email %><br/></span>
+                    <span class=""><strong>Nombre d'invité : </strong><%= list.participations.count %><br/></span>
+                  </div>
+                  <div class="clearfix"></div>
+                </li>
+              </a>
+          <% end %>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
